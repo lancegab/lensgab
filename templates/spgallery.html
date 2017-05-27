@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LensGab Street Photography</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="header">
+		<a href="index" class="logo">
+			<img src="images/LensGabLogo.png">
+		</a>
+		<ul id="navigation">
+			<li>
+				<a href="spgallery">Street Portrait</a>
+			</li>
+			<li>
+				<a href="ssgallery">Street Scenery</a>
+			</li>
+		</ul>
+	</div>
+	<!-- Slideshow-->
+
+	<div class="slideshow-container">
+<!-- 	<div class="mySlides fade">
+    <div class="numbertext">1 / 6</div>
+    <img src="images/portrait/1.jpg" style="width:100%">
+    <div class="text"></div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 6</div>
+    <img src="images/portrait/2.jpg" style="width:100%">
+    <div class="text"></div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 6</div>
+    <img src="images/portrait/3.jpg" style="width:100%">
+    <div class="text"></div>
+  </div>
+
+   <div class="mySlides fade">
+    <div class="numbertext">4 / 6</div>
+    <img src="images/portrait/4.jpg" style="width:100%">
+    <div class="text"></div>
+  </div>
+
+   <div class="mySlides fade">
+    <div class="numbertext">5 / 6</div>
+    <img src="images/portrait/5.jpg" style="width:100%">
+    <div class="text"></div>
+  </div>
+
+   <div class="mySlides fade">
+    <div class="numbertext">6 / 6</div>
+    <img src="images/portrait/6.jpg" style="width:100%">
+    <div class="text"></div>
+  </div> -->
+	{% for image in images %}
+		<div class="mySlides fade">
+			<div class="numbertext">1 / 6</div>
+			<img src="{{image.path}}" style="width:100%">
+
+			<div class="text"></div>
+		</div>
+	{% else %}
+		<div class="mySlides fade">
+			<h2> EMPTY </h2>
+		</div>
+	{% endfor %}
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+	<div id="footer">
+		<div>
+			<p>&copy; 2016 by LensGab. All rights reserved.</p>
+
+		</div>
+	</div>
+
+<!--Slideshow script-->
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+</body>
+</html>
